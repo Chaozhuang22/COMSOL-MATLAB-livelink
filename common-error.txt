@@ -1,0 +1,25 @@
+Error using parallel.internal.pool.deserialize (line 45)
+Unable to read data stream because the data contains a bad version or endian-key
+
+Error in distcomp.remoteparfor/deserialize (line 284)
+            data = parallel.internal.pool.deserialize(...
+
+Error in distcomp.remoteparfor>@(data)deserialize(obj,data) (line 242)
+            [err, workerAborted] = iIntervalErrorDispatch(r, @(data) deserialize(obj, data));
+
+Error in distcomp.remoteparfor>iIntervalErrorDispatch (line 547)
+            origErr = deserFcn(intervalError);
+
+Error in distcomp.remoteparfor/handleIntervalErrorResult (line 242)
+            [err, workerAborted] = iIntervalErrorDispatch(r, @(data) deserialize(obj, data));
+
+Error in distcomp.remoteparfor/getCompleteIntervals (line 395)
+                            [r, err] = obj.handleIntervalErrorResult(r);
+
+Error in scriptForAspectRatioAndPositionSweep (line 25)
+parfor i = 1:length(jobSequence)
+
+Solution: 
+1. Check if variable names in loadAndSetupModel() match with the variables defined in COMSOL.
+2. Check if the study nodes (e.g. std1) specified in runAndVerifyModel() match with the study node tag in the COMSOL model.
+3. Make sure the generic COMSOL can build the specified geometry.
