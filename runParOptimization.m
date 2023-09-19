@@ -24,7 +24,7 @@ function initializeComsolServer()
     task = getCurrentTask();
     labIndex = task.ID;
     currentDir = pwd;
-    cd("S:\COMSOL\COMSOL61\Multiphysics\mli")
+    cd("E:\COMSOL\COMSOL61\Multiphysics\mli")
     try
         mphstart(comsolPort(labIndex));
     catch
@@ -39,15 +39,15 @@ function model = loadAndSetupModel(modelName, l, w, h)
     model = mphload(modelName, 'model1');
     model.param.set('legl', l);
     model.param.set('legw', w);
-    model.param.set('tmesh', h);
+    model.param.set('fraction', h);
 end
 
 function runAndVerifyModel(model, jobIndex, numOfJobs)
-    model.study('std2').run;
+    model.study('std1').run;
     model.mesh('mpart1').feature('imp1').importData;
     fprintf("Verifying TO %d/%d ...\n", jobIndex, numOfJobs);
     try
-        model.study('std5').run;
+        model.study('std2').run;
     catch
         fprintf("Extrude function failed, skipped.\n");
     end
