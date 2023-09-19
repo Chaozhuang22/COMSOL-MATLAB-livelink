@@ -1,5 +1,5 @@
 # COMSOL-MATLAB-livelink
-This repository contains MATLAB .m files that automate topology optimization in COMSOL using the LiveLink interface. These files are associated with the research presented in this [paper](https://dx.doi.org/10.1088/2632-959X/acef44) and in this [article](https://chaozhuang22.github.io/fea/to/) 
+This repository contains MATLAB .m files that automate topology optimization in COMSOL using the LiveLink interface. These files are associated with the research presented in this [paper](https://dx.doi.org/10.1088/2632-959X/acef44) and in this [article](https://chaozhuang22.github.io/fea/to/).
 
 ## Why Is This Workflow Necessary?
 In topology optimization, the slots usually reserved for parametric and auxiliary sweeps are already occupied by beta continuation and eta robust formulation. Therefore, an external control for parameter sweeping is required. This is particularly useful for handling cases with varying piezoresistor aspect ratios while maintaining a fixed area. The dimensions (length and width) of the piezoresistor are calculated using the function defined in calcRectangleDims.m.
