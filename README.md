@@ -1,9 +1,21 @@
 # COMSOL-MATLAB-livelink
-These are the .m file of COMSOL optimization study automated by MATLAB livelink.
+This repository contains MATLAB .m files that automate topology optimization in COMSOL using the LiveLink interface. These files are associated with the research presented in this [paper](https://dx.doi.org/10.1088/2632-959X/acef44).
 
-Since in the paper, a sweep is performed across different piezoresistor aspect ratio with fixed area.
-The length and width of the piezoresistor is calculated by the function defined in calcRectangleDims.m.
+# Why Is This Workflow Necessary?
+In topology optimization, the slots usually reserved for parametric and auxiliary sweeps are already occupied by beta continuation and eta robust formulation. Therefore, an external control for parameter sweeping is required. This is particularly useful for handling cases with varying piezoresistor aspect ratios while maintaining a fixed area. The dimensions (length and width) of the piezoresistor are calculated using the function defined in calcRectangleDims.m.
 
-The main script will first generate a list of parameter list based on specified area and provided list of aspect ratio, it then feeds the parameters from the list into the COMSOL optimization function, generating optimized designs with specified geometry constraints.
+# Main Script Workflow Overview
+The main.m script performs the following steps:
+1. Generates a list of parameters based on a specified area and a provided list of aspect ratios.
+2. Feeds these parameters into the COMSOL optimization function.
+3. Produces optimized designs that meet the specified geometric constraints, using the function runParOptimization.m.
+Note: The optimization function is embedded within a parfor loop, which requires MATLAB's Parallel Computing Toolbox.
 
-To use these files, please put them in the same folder as the .mph files, after specifying path name variables, run the runParOptimization.m script.
+# Common Errors and Troubleshooting
+The connection between COMSOL and MATLAB can be unreliable, often resulting in ambiguous errors that are difficult to interpret. If an error occurs:
+1. Verify the compatibility of the original COMSOL .mph file with the parameters you are using.
+2. If the .mph model is fine, proceed to debug the MATLAB code.
+For a common error and its solutions, refer to the common-error.txt file.
+
+# Usage Instructions
+To use these scripts, place them in the same folder as your COMSOL .mph files. After specifying the path name variables, run the main.m script.
