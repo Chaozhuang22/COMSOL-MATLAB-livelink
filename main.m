@@ -1,7 +1,7 @@
 % Define paths and parameters
 comsolPath = "E:\COMSOL\COMSOL61\Multiphysics\bin\win64";
-storage = "E:\Chao\OneDrive - 国立研究開発法人物質・材料研究機構\Matlab_sync\";
-model = "TO3-mss";
+storage = "E:\comsolStorage\";
+model = "TO-mss";
 edgeLength = 40;
 aspectRatio = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9];
 position = 0;
